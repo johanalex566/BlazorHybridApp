@@ -5,4 +5,4 @@ Blazor app is hosted in a blazorWebView
 *Run natively onthe device.
 
 
-BlazorWebView: Control que permite incrustar una aplicación blazo dentro de una aplicaicón de escritorio o móvil. (.NET MAUI, WPF, Windows Form)
+BlazorWebView: Control que permite incrustar una aplicación blazor dentro de una aplicación de escritorio o móvil. (.NET MAUI, WPF, Windows Form)
