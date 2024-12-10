@@ -1,5 +1,7 @@
 ﻿using CoffeeBrowser.Library.Data;
+using CoffeeBrowser.Maui.Auth;
 using CoffeeBrowser.Maui.Data;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.Logging;
 
 namespace CoffeeBrowser.Maui
@@ -19,11 +21,14 @@ namespace CoffeeBrowser.Maui
             builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+            builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Logging.AddDebug();
 #endif
+            builder.Services.AddAuthorizationCore();
+            builder.Services.AddCascadingAuthenticationState();
+            builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
-           builder.Services.AddTransient<ICoffeeService, CoffeeService>();     
+            builder.Services.AddTransient<ICoffeeService, CoffeeService>();
 
             return builder.Build();
         }
