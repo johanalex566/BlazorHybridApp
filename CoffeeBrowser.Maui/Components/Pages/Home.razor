@@ -1,6 +1,13 @@
 ﻿@page "/"
 
-<h1>Johan Coffe</h1>
 
-Welcome to the coffee browser app.
+<h1>Coffe</h1>
 
+<AuthorizeView>
+    <Authorized>
+        Welcome to the coffee browser app.
+    </Authorized>
+    <NotAuthorized>
+        Please log in
+    </NotAuthorized>
+</AuthorizeView>

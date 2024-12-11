@@ -35,7 +35,7 @@ public class CustomAuthStateProvider : AuthenticationStateProvider
         */
         var identity = new ClaimsIdentity("Custom");
 
-        var authenticatedUser = new ClaimsPrincipal();
+        var authenticatedUser = new ClaimsPrincipal(identity);
 
         //    var authenticatedUser = new ClaimsPrincipal(new ClaimsIdentity());
 

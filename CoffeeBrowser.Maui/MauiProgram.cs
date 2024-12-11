@@ -25,7 +25,6 @@ namespace CoffeeBrowser.Maui
             builder.Logging.AddDebug();
 #endif
             builder.Services.AddAuthorizationCore();
-            builder.Services.AddCascadingAuthenticationState();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
             builder.Services.AddTransient<ICoffeeService, CoffeeService>();
