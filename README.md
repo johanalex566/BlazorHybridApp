@@ -1,5 +1,8 @@
 **Building Blazor hybrid App**
 
+![image](https://github.com/user-attachments/assets/c725dfa3-9aff-4678-bb0b-b7491d675f9f)
+
+
 Blazor app is hosted in a blazorWebView
 
 *Run natively onthe device.
