@@ -34,7 +34,9 @@ public class CustomAuthStateProvider : AuthenticationStateProvider
             Return a new ClaimsPrincipal based on a new ClaimsIdentity.
         */
         Claim[] claims = [
-            new Claim(ClaimTypes.Name, "Johan")
+            new Claim(ClaimTypes.Name, "Johan"),
+            new Claim(ClaimTypes.Role, "Admin")
+
             ];
 
         var identity = new ClaimsIdentity(claims, "Custom");
