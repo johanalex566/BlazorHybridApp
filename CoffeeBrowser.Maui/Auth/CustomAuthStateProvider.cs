@@ -1,8 +1,10 @@
 ﻿namespace CoffeeBrowser.Maui.Auth;
+
+using CoffeeBrowser.Library.Auth;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Security.Claims;
 
-public class CustomAuthStateProvider : AuthenticationStateProvider
+public class CustomAuthStateProvider : AuthenticationStateProvider, ICustomAuthStateProvider
 {
     private ClaimsPrincipal currentUser = new ClaimsPrincipal(new ClaimsIdentity());
 
