@@ -2,11 +2,13 @@
 
 using CoffeeBrowser.Library.Auth;
 using Microsoft.AspNetCore.Components.Authorization;
+using System;
 using System.Security.Claims;
+using System.Security.Principal;
 
 public class CustomAuthStateProvider : AuthenticationStateProvider, ICustomAuthStateProvider
 {
-    private ClaimsPrincipal currentUser = new ClaimsPrincipal(new ClaimsIdentity());
+    private ClaimsPrincipal currentUser = GetWindowsPricipal();
 
     public override Task<AuthenticationState> GetAuthenticationStateAsync() =>
         Task.FromResult(new AuthenticationState(currentUser));
@@ -29,25 +31,15 @@ public class CustomAuthStateProvider : AuthenticationStateProvider, ICustomAuthS
 
     private Task<ClaimsPrincipal> LoginWithExternalProviderAsync()
     {
-        /*
-            Provide OpenID/MSAL code to authenticate the user. See your identity 
-            provider's documentation for details.
-
-            Return a new ClaimsPrincipal based on a new ClaimsIdentity.
-        */
-        Claim[] claims = [
-            new Claim(ClaimTypes.Name, "Johan"),
-            new Claim(ClaimTypes.Role, "Admin")
-
-            ];
-
-        var identity = new ClaimsIdentity(claims, "Custom");
-
-        var authenticatedUser = new ClaimsPrincipal(identity);
-
-        //    var authenticatedUser = new ClaimsPrincipal(new ClaimsIdentity());
-
+        var authenticatedUser = GetWindowsPricipal();
         return Task.FromResult(authenticatedUser);
+    }
+
+    private static ClaimsPrincipal GetWindowsPricipal()
+    {
+        var identity = WindowsIdentity.GetCurrent();
+
+        return new WindowsPrincipal(identity);
     }
 
     public void Logout()
