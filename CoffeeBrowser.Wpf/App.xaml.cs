@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CoffeeBrowser.Library.Data;
+using CoffeeBrowser.wpf.Data;
+using CoffeeBrowser.Wpf.Auth;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
 namespace CoffeeBrowser.Wpf
@@ -12,6 +16,11 @@ namespace CoffeeBrowser.Wpf
 #if DEBUG
             services.AddBlazorWebViewDeveloperTools();
 #endif
+            services.AddAuthorizationCore();
+            services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
+
+            services.AddTransient<ICoffeeService, CoffeeService>();
+
             var serviceProvider = services.BuildServiceProvider();
             this.Resources.Add("ServiceProvider", serviceProvider);
         }
